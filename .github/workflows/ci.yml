@@ -76,8 +76,10 @@ jobs:
           test-enable-coverage: ${{ matrix.coverage }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'which make are we running?'
+        shell: bash
         run: which -a make
       - name: 'and the path is...'
+        shell: bash
         run: echo $PATH
 
   build-status:
