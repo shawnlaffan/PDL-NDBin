@@ -42,7 +42,7 @@ jobs:
         perl-version: ['5']
         include:
           - { os: 'windows-latest', perl-version: "5.40" }
-#          - { os: 'ubuntu-latest', perl-version: "5.14" }
+#          - { os: 'windows-latest', perl-version: "5.32" }
 #          - { os: 'ubuntu-latest', perl-version: "5.16" }
 #          - { os: 'ubuntu-latest', perl-version: "5.20" }
 #          - { os: 'ubuntu-latest', perl-version: "5.30" }
@@ -54,7 +54,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Get dist artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: dist
           path: build-dir
