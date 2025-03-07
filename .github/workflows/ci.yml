@@ -64,6 +64,15 @@ jobs:
           path: build-dir
           target-setup-perl: true
           perl-version: ${{ matrix.perl-version }}
+      - name: 'patched EUMM'
+        shell: bash
+        if: ${{ matrix.os == 'windows-latest' }}
+        run: |
+          SP=/c/hostedtoolcache/windows/strawberry-perl/5.32.1/x64
+          PATH=${SP}/c/bin:${SP}/perl/bin:${SP}/perl/site/bin:${PATH}
+          CPANM=${SP}/perl/bin/cpanm
+          $CPANM -v LWP::Protocol::https
+          $CPANM https://github.com/shawnlaffan/ExtUtils-MakeMaker/archive/win32_fixin_path.tar.gz
       - name: 'ci-dist: target-all after install-dist-perl-deps'
         uses: PDLPorters/devops/github-actions/ci-dist@master
         with:
